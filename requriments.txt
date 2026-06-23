@@ -1,5 +1,5 @@
 django
 djangorestframework
-pyyamal
+pyyaml
 requests
 django-cors-headers
