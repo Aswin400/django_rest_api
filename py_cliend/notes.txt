@@ -1,0 +1,22 @@
+first we learned how the requests module works and comments
+1.requests.get
+2.requests.post
+3.request.json()
+4.request.status_code
+
+and we start the drf project 
+1.create a venv comments -->  python3 -m venv venv
+2.install requirements.py 
+
+create a project floder 
+1.django-admin startproject backend
+2.django-admin startapp api
+after creating the app we can mention in the backend setting mainproject -->(backend)
+
+create a first api view
+1.from django.http import JsonResponse --> this JsonResponse using convert python object into a json message rather json string
+2.we create a class api_view(request,*args,**kwargs) args are contains tuple elements and kwargs are contains dict elements
+
+get json string using url in our py_cliend
+1. we can get the json string using this comments -- > get_response request.get(url) and print(get_response.json())
+
