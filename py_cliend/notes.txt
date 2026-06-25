@@ -20,3 +20,29 @@ create a first api view
 get json string using url in our py_cliend
 1. we can get the json string using this comments -- > get_response request.get(url) and print(get_response.json())
 
+*.JsonResponse only support dict elements
+*.httpResponse only str and bype stream elements
+
+1. HttpResponse
+
+HttpResponse is a general-purpose response. It can send almost any content to the browser.
+
+It supports:
+------------
+✅ Strings
+✅ HTML
+✅ Bytes
+✅ Files (with related response classes like FileResponse)
+✅ Any object that can be converted to a string
+---------------------------------------------------------
+
+JSON supports:
+--------------
+✅ Dictionary (dict)
+✅ List (list) (use safe=False for a top-level list)
+✅ String (str)
+✅ Integer (int)
+✅ Float (float)
+✅ Boolean (True / False)
+✅ None (becomes null in JSON)
+----------------------------------------------------
