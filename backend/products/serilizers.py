@@ -8,4 +8,6 @@ class ProductSerializers(serializers.ModelSerializer) :
             'title',
             'content',
             'price',
+            'gst_price',
+            'brand'
         ]

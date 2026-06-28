@@ -1,7 +1,7 @@
 from django.db import models
 
 class Product(models.Model) : 
-    title = models.CharField(default="default",null=True)
+    title = models.CharField(default="default")
     content = models.TextField(default="default",null=True)
     price = models.IntegerField(default=1000)
 
@@ -9,3 +9,8 @@ class Product(models.Model) :
 
     def gst_price(self) : 
         return self.price*10
+    
+    def brand(self) : 
+        if hasattr(self,'audi') : 
+            return self.audi
+        return None
