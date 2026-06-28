@@ -3,27 +3,17 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from products.models import Product
 from django.forms.models import model_to_dict
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from products.serilizers import ProductSerializers
 
-@csrf_exempt
-def api_view(request,*args,**kwargs) : 
-    product_data = Product.objects.all().order_by('?').first() # This method only convert the single elements
+@api_view(['POST'])
+def apis_view(request,*args,**kwargs) : 
+    data = request.data
+    return Response(data)
 
-    data = {}
-    print(f'headers : {request.headers}')
-
-    if product_data : 
-        data = model_to_dict(product_data)
-        print(data)
-    
-    meta_data = request.META
-    print(meta_data)
-
-    return JsonResponse({'Products' : data,'headers' : dict(request.headers),'User' : request.META['USER']})
-
-def httpapi_view(request,*args,**kwargs) : 
-    lists = ['balaji','aswin','bhuvan',1]
-    data = {'number' : 1,'str' : 'str'}
-    return HttpResponse(str({'hi' : lists,'python objects' : data}))
-
-def Jsonapi_view(request,*args,**kwargs) : 
-    return JsonResponse({'message' : 'hi i am json '})
+@api_view(["GET"])
+def sample_view(request,*args,**kwargs) : 
+    Product_data = Product.objects.all().first()
+    data = ProductSerializers(Product_data).data
+    return Response(data)
