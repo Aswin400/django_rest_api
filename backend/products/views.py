@@ -67,3 +67,22 @@ def all_view_page(request,pk=None,*args,**kwargs,) :
             serlizers.save(content = content)
             print(serlizers.save())
             return Response(serlizers.data)
+
+class Productupdateview(generics.UpdateAPIView) : 
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializers
+
+    def perform_update(self, serializer)  :
+      title = serializer.validated_data.get('title')
+      content = serializer.validated_data.get('content')
+
+      if content is None : 
+          content = title
+          serializer.save(content=content)
+          return 
+      else : 
+          serializer.save()
+
+class Productdeleteview(generics.DestroyAPIView) : 
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializers
