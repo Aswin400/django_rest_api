@@ -1,8 +1,8 @@
 from django.db import models
 
 class Product(models.Model) : 
-    title = models.CharField(default="default")
-    content = models.TextField(default="default",null=True)
+    title = models.CharField()
+    content = models.TextField(default=None)
     price = models.IntegerField(default=1000)
 
     @property
